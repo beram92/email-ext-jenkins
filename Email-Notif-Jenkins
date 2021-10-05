@@ -1,0 +1,12 @@
+    stage('Sending Email Notification') {
+                    def mailRecipients = 'adinugroho.vendor.sapti@pegadaian.co.id'
+                    //def jobName = currentBuild.fullDisplayName
+                    def jobName = "Approval Require"
+                    //emailext body: '''${SCRIPT, template="groovy-html.template"}''',
+                    emailext body: '''${SCRIPT, template="groovy-html3.template"}''',
+                    mimeType: 'text/html',
+                    subject: "[Jenkins] ${jobName}",
+                    to: "${mailRecipients}",
+                    replyTo: "${mailRecipients}",
+                    recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+                }
